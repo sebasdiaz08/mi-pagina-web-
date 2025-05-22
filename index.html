@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio Personal - Ingeniero Electrónico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="80" r="2.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: block;
+            border: 5px solid #3498db;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        ul, ol {
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+
+        li {
+            margin: 10px 0;
+            padding: 5px 0;
+        }
+
+        .tech-list li {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 25px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-list li:hover {
+            transform: scale(1.1);
+        }
+
+        .gaming-list li {
+            background: linear-gradient(45deg, #9b59b6, #8e44ad);
+            color: white;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        form {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        input[type="text"], input[type="email"], textarea, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #bdc3c7;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+        }
+
+        select[multiple] {
+            height: 120px;
+        }
+
+        button {
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+        }
+
+        .contact-info {
+            background: linear-gradient(45deg, #34495e, #2c3e50);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mi Portafolio Personal</h1>
+            <p class="subtitle">Ingeniero Electrónico y en Telecomunicaciones</p>
+        </header>
+
+        <section class="section">
+            <h2>Sobre Mí</h2>
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Foto de perfil profesional" class="profile-image">
+            
+            <p>Soy un ingeniero electrónico y en telecomunicaciones de 31 años, apasionado por la tecnología y la innovación. Actualmente me encuentro en búsqueda de nuevas oportunidades laborales donde pueda aplicar mis conocimientos técnicos y contribuir al desarrollo de proyectos desafiantes.</p>
+            
+            <p>Mi experiencia abarca tanto el diseño de sistemas electrónicos como el desarrollo de soluciones en telecomunicaciones. Me considero una persona autodidacta, siempre dispuesta a aprender nuevas tecnologías y metodologías que me permitan crecer profesionalmente.</p>
+            
+            <p>Fuera del ámbito profesional, disfruto mucho de los videojuegos, los cuales no solo son una forma de entretenimiento, sino que también me han ayudado a desarrollar habilidades de resolución de problemas, trabajo en equipo y pensamiento estratégico.</p>
+
+            <div class="contact-info">
+                <h3>Información de Contacto</h3>
+                <p><strong>Edad:</strong> 31 años</p>
+                <p><strong>Estado Civil:</strong> Soltero</p>
+                <p><strong>Disponibilidad:</strong> Inmediata para nuevas oportunidades</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Experiencia y Habilidades Técnicas</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Área de Especialización</th>
+                        <th>Tecnologías/Herramientas</th>
+                        <th>Nivel de Experiencia</th>
+                        <th>Years de Experiencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Diseño Electrónico</td>
+                        <td>PCB Design, CAD, Simulación</td>
+                        <td>Avanzado</td>
+                        <td>5+ años</td>
+                    </tr>
+                    <tr>
+                        <td>Telecomunicaciones</td>
+                        <td>Redes, Protocolos, RF</td>
+                        <td>Intermedio-Avanzado</td>
+                        <td>4+ años</td>
+                    </tr>
+                    <tr>
+                        <td>Programación</td>
+                        <td>C/C++, Python, MATLAB</td>
+                        <td>Intermedio</td>
+                        <td>3+ años</td>
+                    </tr>
+                    <tr>
+                        <td>Sistemas Embebidos</td>
+                        <td>Arduino, Raspberry Pi, Microcontroladores</td>
+                        <td>Avanzado</td>
+                        <td>4+ años</td>
+                    </tr>
+                    <tr>
+                        <td>Análisis de Datos</td>
+                        <td>Excel, MATLAB, Python</td>
+                        <td>Intermedio</td>
+                        <td>2+ años</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Tecnologías que Domino</h2>
+            
+            <h3>Lenguajes de Programación</h3>
+            <ul class="tech-list" style="list-style: none; padding: 0;">
+                <li>C/C++</li>
+                <li>Python</li>
+                <li>MATLAB</li>
+                <li>Verilog/VHDL</li>
+                <li>JavaScript</li>
+                <li>SQL</li>
+            </ul>
+
+            <h3>Herramientas y Software</h3>
+            <ol>
+                <li>Altium Designer - Diseño de PCB</li>
+                <li>AutoCAD - Diseño técnico</li>
+                <li>MATLAB/Simulink - Análisis y simulación</li>
+                <li>LabVIEW - Instrumentación virtual</li>
+                <li>Proteus - Simulación de circuitos</li>
+                <li>Network Analyzer Tools</li>
+                <li>Oscilloscope y equipos de medición</li>
+                <li>Git/GitHub - Control de versiones</li>
+            </ol>
+
+            <h3>Certificaciones y Logros</h3>
+            <ul>
+                <li>Certificación en Sistemas de Telecomunicaciones <span class="achievement-badge">2022</span></li>
+                <li>Curso avanzado de Diseño de PCB <span class="achievement-badge">2023</span></li>
+                <li>Participación en proyecto de IoT empresarial <span class="achievement-badge">2023</span></li>
+                <li>Desarrollo de sistema de monitoreo remoto <span class="achievement-badge">2024</span></li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Mis Intereses y Pasatiempos</h2>
+            
+            <h3>Videojuegos Favoritos</h3>
+            <ul class="gaming-list" style="list-style: none; padding: 0;">
+                <li>🎮 RPGs y MMORPGs</li>
+                <li>🕹️ Juegos de Estrategia</li>
+                <li>🎯 FPS Competitivos</li>
+                <li>🏎️ Simuladores de Carreras</li>
+                <li>🧩 Puzzle Games</li>
+            </ul>
+
+            <h3>Cómo los videojuegos complementan mi perfil profesional:</h3>
+            <ol>
+                <li><strong>Resolución de problemas complejos:</strong> Los juegos de estrategia y puzzles han mejorado mi capacidad analítica</li>
+                <li><strong>Trabajo en equipo:</strong> Los MMORPGs me han enseñado la importancia de la coordinación y comunicación</li>
+                <li><strong>Gestión de recursos:</strong> Los juegos de construcción y gestión han desarrollado mis habilidades organizativas</li>
+                <li><strong>Adaptabilidad:</strong> Los juegos competitivos requieren adaptación rápida a nuevas situaciones</li>
+                <li><strong>Persistencia:</strong> Superar desafíos difíciles ha fortalecido mi determinación</li>
+            </ol>
+
+            <p>Además de los videojuegos, me mantengo actualizado con las últimas tendencias tecnológicas, especialmente en áreas como inteligencia artificial, IoT, y nuevas tecnologías de comunicación como 5G y 6G. Participo activamente en comunidades online de ingenieros y desarrollo tecnológico.</p>
+        </section>
+
+        <section class="section">
+            <h2>Formulario de Contacto</h2>
+            <p>Si estás interesado en mi perfil profesional o tienes una oportunidad laboral, no dudes en contactarme a través del siguiente formulario:</p>
+            
+            <form>
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo *</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="empresa">Empresa/Organización</label>
+                    <input type="text" id="empresa" name="empresa">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono de Contacto</label>
+                    <input type="text" id="telefono" name="telefono">
+                </div>
+
+                <div class="form-group">
+                    <label for="areas_interes">Áreas de Interés (Selección múltiple)</label>
+                    <select id="areas_interes" name="areas_interes" multiple>
+                        <option value="electronica">Diseño Electrónico</option>
+                        <option value="telecomunicaciones">Telecomunicaciones</option>
+                        <option value="sistemas_embebidos">Sistemas Embebidos</option>
+                        <option value="iot">Internet de las Cosas (IoT)</option>
+                        <option value="rf">Radiofrecuencia</option>
+                        <option value="automatizacion">Automatización Industrial</option>
+                        <option value="desarrollo_software">Desarrollo de Software</option>
+                        <option value="investigacion">Investigación y Desarrollo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo_oportunidad">Tipo de Oportunidad (Selección múltiple)</label>
+                    <select id="tipo_oportunidad" name="tipo_oportunidad" multiple>
+                        <option value="empleo_tiempo_completo">Empleo Tiempo Completo</option>
+                        <option value="empleo_medio_tiempo">Empleo Medio Tiempo</option>
+                        <option value="freelance">Trabajo Freelance</option>
+                        <option value="consultoria">Consultoría</option>
+                        <option value="colaboracion">Colaboración en Proyectos</option>
+                        <option value="investigacion">Proyectos de Investigación</option>
+                        <option value="startup">Startup/Emprendimiento</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">Mensaje/Descripción de la Oportunidad *</label>
+                    <textarea id="mensaje" name="mensaje" rows="6" placeholder="Describe la oportunidad laboral, el proyecto, o cualquier información adicional que consideres relevante..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="presupuesto">Rango de Presupuesto/Salario (Opcional)</label>
+                    <select id="presupuesto" name="presupuesto">
+                        <option value="">Selecciona un rango</option>
+                        <option value="menos_30k">Menos de $30,000 USD</option>
+                        <option value="30k_50k">$30,000 - $50,000 USD</option>
+                        <option value="50k_70k">$50,000 - $70,000 USD</option>
+                        <option value="70k_100k">$70,000 - $100,000 USD</option>
+                        <option value="mas_100k">Más de $100,000 USD</option>
+                        <option value="por_proyecto">Pago por proyecto</option>
+                        <option value="a_negociar">A negociar</option>
+                    </select>
+                </div>
+
+                <button type="submit">Enviar Mensaje 🚀</button>
+            </form>
+        </section>
+
+        <footer style="text-align: center; padding: 20px; color: #7f8c8d; border-top: 2px solid #ecf0f1; margin-top: 40px;">
+            <p>&copy; 2025 - Portafolio Personal | Ingeniero Electrónico y en Telecomunicaciones</p>
+            <p>Disponible para nuevas oportunidades laborales</p>
+        </footer>
+    </div>
+
+    <script>
+        // Agregar interactividad al formulario
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener datos del formulario
+            const formData = new FormData(this);
+            const nombre = formData.get('nombre');
+            
+            if (nombre) {
+                alert(`¡Gracias ${nombre}! Tu mensaje ha sido enviado. Me pondré en contacto contigo pronto.`);
+                this.reset();
+            }
+        });
+
+        // Animación suave al hacer scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efecto de typing para el título
+        const title = document.querySelector('h1');
+        const originalText = title.textContent;
+        title.textContent = '';
+
+        let i = 0;
+        const typeWriter = () => {
+            if (i < originalText.length) {
+                title.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+
+        // Iniciar el efecto después de cargar la página
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>
